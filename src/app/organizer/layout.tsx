@@ -14,12 +14,6 @@ export default function OrganizerLayout({
             <Link href="/organizer" className="font-semibold">
               Panel organizatora
             </Link>
-            <Link
-              href="/organizer"
-              className="text-sm text-gray-500 hover:text-black"
-            >
-              Lista wydarzeń
-            </Link>
             <Link href="/" className="text-sm text-gray-500 hover:text-black">
               Strona główna
             </Link>
