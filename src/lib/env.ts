@@ -12,11 +12,15 @@ const envSchema = z.object({
   NEXT_PUBLIC_APP_URL: z.string().min(1).default("http://localhost:3000"),
 });
 
+// Empty-string env vars (unset placeholders in .env.local) should be treated
+// like "not set" rather than failing the optional fields' min-length check.
+const orUndefined = (v: string | undefined) => (v ? v : undefined);
+
 export const env = envSchema.parse({
   DATABASE_URL: process.env.DATABASE_URL,
-  BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
-  BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
-  RESEND_API_KEY: process.env.RESEND_API_KEY,
-  RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL,
-  NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+  BETTER_AUTH_SECRET: orUndefined(process.env.BETTER_AUTH_SECRET),
+  BETTER_AUTH_URL: orUndefined(process.env.BETTER_AUTH_URL),
+  RESEND_API_KEY: orUndefined(process.env.RESEND_API_KEY),
+  RESEND_FROM_EMAIL: orUndefined(process.env.RESEND_FROM_EMAIL),
+  NEXT_PUBLIC_APP_URL: orUndefined(process.env.NEXT_PUBLIC_APP_URL),
 });
