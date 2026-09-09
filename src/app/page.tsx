@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-semibold">Wydarzenia</h1>
         <div className="flex items-center gap-4 text-sm text-gray-500">
           <Link href="/ticket" className="hover:text-black">

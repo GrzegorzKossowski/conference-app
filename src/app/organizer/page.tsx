@@ -15,7 +15,7 @@ export default async function OrganizerEventsPage() {
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-xl font-semibold">Wydarzenia</h1>
         <Link
           href="/organizer/events/new"

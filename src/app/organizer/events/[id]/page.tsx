@@ -31,7 +31,7 @@ export default async function EventDetailPage({
 
   return (
     <div>
-      <div className="mb-6 flex items-start justify-between">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-xl font-semibold">{event.title}</h1>
           <p className="text-sm text-gray-500">
@@ -56,7 +56,7 @@ export default async function EventDetailPage({
         </div>
       </div>
 
-      <div className="mb-6 grid grid-cols-5 gap-3">
+      <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-5">
         <Stat label="Wszyscy" value={guests.length} />
         <Stat label="Oczekujący" value={countFor("pending")} />
         <Stat label="Potwierdzeni" value={countFor("confirmed")} />
