@@ -3,6 +3,11 @@ import { notFound } from "next/navigation";
 import { eq, desc, count } from "drizzle-orm";
 import { db } from "@/db";
 import { events, registrations } from "@/db/schema";
+import { RefreshButton } from "@/components/refresh-button";
+
+// Dynamic route segment already forces per-request rendering, but be
+// explicit: this page must never serve stale guest/check-in data.
+export const dynamic = "force-dynamic";
 
 export default async function EventDetailPage({
   params,
@@ -64,7 +69,10 @@ export default async function EventDetailPage({
         <Stat label="Anulowani/wygasli" value={countFor("cancelled") + countFor("expired")} />
       </div>
 
-      <h2 className="mb-2 text-lg font-medium">Goście</h2>
+      <div className="mb-2 flex items-center justify-between">
+        <h2 className="text-lg font-medium">Goście</h2>
+        <RefreshButton />
+      </div>
       {guests.length === 0 ? (
         <p className="text-sm text-gray-500">Brak zapisanych gości.</p>
       ) : (
