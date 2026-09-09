@@ -31,7 +31,7 @@ const bannerStyles: Record<CheckinResult["result"], string> = {
 
 const bannerLabels: Record<CheckinResult["result"], string> = {
   success: "OBECNY",
-  already_checked_in: "JUŻ ZAREJESTROWANY",
+  already_checked_in: "JUŻ OBECNY",
   not_confirmed: "NIEPOTWIERDZONY",
   invalid_status: "NIEAKTUALNY BILET",
   not_found: "NIE ZNALEZIONO",

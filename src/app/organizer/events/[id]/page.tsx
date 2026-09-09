@@ -4,6 +4,10 @@ import { eq, desc, count } from "drizzle-orm";
 import { db } from "@/db";
 import { events, registrations } from "@/db/schema";
 import { RefreshButton } from "@/components/refresh-button";
+import {
+  registrationStatusLabels,
+  registrationStatusStyles,
+} from "@/lib/status-labels";
 
 // Dynamic route segment already forces per-request rendering, but be
 // explicit: this page must never serve stale guest/check-in data.
@@ -119,20 +123,12 @@ function Stat({ label, value }: { label: string; value: number }) {
   );
 }
 
-const statusStyles: Record<string, string> = {
-  pending: "bg-yellow-50 text-yellow-700",
-  confirmed: "bg-blue-50 text-blue-700",
-  checked_in: "bg-green-50 text-green-700",
-  cancelled: "bg-gray-100 text-gray-500",
-  expired: "bg-red-50 text-red-700",
-};
-
 function StatusBadge({ status }: { status: string }) {
   return (
     <span
-      className={`rounded px-2 py-1 text-xs ${statusStyles[status] ?? ""}`}
+      className={`rounded px-2 py-1 text-xs ${registrationStatusStyles[status] ?? ""}`}
     >
-      {status}
+      {registrationStatusLabels[status] ?? status}
     </span>
   );
 }

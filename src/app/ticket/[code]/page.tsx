@@ -4,14 +4,7 @@ import { db } from "@/db";
 import { events, registrations } from "@/db/schema";
 import { generateQrDataUrl } from "@/lib/qr";
 import { HomeLink } from "@/components/home-link";
-
-const statusLabels: Record<string, string> = {
-  pending: "Oczekuje na potwierdzenie",
-  confirmed: "Potwierdzony",
-  checked_in: "Wejście odnotowane",
-  cancelled: "Anulowany",
-  expired: "Wygasł",
-};
+import { registrationStatusLabels } from "@/lib/status-labels";
 
 export default async function TicketPage({
   params,
@@ -62,7 +55,10 @@ export default async function TicketPage({
           />
         )}
         <p className="mt-4 text-sm">
-          Status: <strong>{statusLabels[registration.status] ?? registration.status}</strong>
+          Status:{" "}
+          <strong>
+            {registrationStatusLabels[registration.status] ?? registration.status}
+          </strong>
         </p>
         <p className="mt-2 text-sm text-gray-500">
           Twój kod dostępu: <strong>{registration.shortCode}</strong>
