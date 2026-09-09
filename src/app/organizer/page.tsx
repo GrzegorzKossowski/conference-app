@@ -3,6 +3,10 @@ import { desc } from "drizzle-orm";
 import { db } from "@/db";
 import { events } from "@/db/schema";
 
+// No dynamic segment on this route, so Next would otherwise statically
+// cache the events list at build time instead of querying on each request.
+export const dynamic = "force-dynamic";
+
 export default async function OrganizerEventsPage() {
   const allEvents = await db
     .select()
