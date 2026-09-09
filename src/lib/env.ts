@@ -5,7 +5,7 @@ import { z } from "zod";
 // not-yet-built features stay optional so `dev`/`build` don't break early.
 const envSchema = z.object({
   DATABASE_URL: z.string().min(1),
-  BETTER_AUTH_SECRET: z.string().min(1).optional(),
+  BETTER_AUTH_SECRET: z.string().min(1),
   BETTER_AUTH_URL: z.string().min(1).default("http://localhost:3000"),
   RESEND_API_KEY: z.string().min(1).optional(),
   RESEND_FROM_EMAIL: z.string().min(1).default("onboarding@resend.dev"),

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SignOutButton } from "@/components/sign-out-button";
 
 export default function OrganizerLayout({
   children,
@@ -12,6 +13,7 @@ export default function OrganizerLayout({
           <Link href="/organizer" className="font-semibold">
             Panel organizatora
           </Link>
+          <SignOutButton />
         </div>
       </header>
       <main className="mx-auto max-w-4xl px-4 py-8">{children}</main>

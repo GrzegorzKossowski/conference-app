@@ -8,6 +8,10 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 
+// Better Auth's own tables (user/session/account/verification), generated
+// via `npx @better-auth/cli generate` — do not hand-edit, regenerate instead.
+export * from "./auth-schema";
+
 export const registrationStatusEnum = pgEnum("registration_status", [
   "pending", // created, confirmation email sent, not yet confirmed
   "confirmed", // confirmed via double opt-in link, ticket/QR email sent
