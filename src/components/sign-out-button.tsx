@@ -13,7 +13,7 @@ export function SignOutButton() {
     <button
       onClick={async () => {
         await authClient.signOut();
-        router.push("/organizer/login");
+        router.push("/");
         router.refresh();
       }}
       className="text-sm text-gray-500 hover:text-black"

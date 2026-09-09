@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { events, registrations } from "@/db/schema";
 import { generateQrDataUrl } from "@/lib/qr";
+import { HomeLink } from "@/components/home-link";
 
 const statusLabels: Record<string, string> = {
   pending: "Oczekuje na potwierdzenie",
@@ -35,6 +36,9 @@ export default async function TicketPage({
 
   return (
     <div className="mx-auto max-w-md px-4 py-12 text-center">
+      <div className="mb-6 text-left">
+        <HomeLink />
+      </div>
       <h1 className="text-xl font-semibold">{event.title}</h1>
       <p className="mt-1 text-sm text-gray-500">
         {new Date(event.startsAt).toLocaleString("pl-PL")}

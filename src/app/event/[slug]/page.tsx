@@ -3,6 +3,7 @@ import { and, eq, inArray, count } from "drizzle-orm";
 import { db } from "@/db";
 import { events, registrations } from "@/db/schema";
 import { RegistrationForm } from "@/components/registration-form";
+import { HomeLink } from "@/components/home-link";
 
 const ACTIVE_STATUSES = ["pending", "confirmed", "checked_in"] as const;
 
@@ -30,6 +31,9 @@ export default async function EventLandingPage({
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
+      <div className="mb-6">
+        <HomeLink />
+      </div>
       <h1 className="text-2xl font-semibold">{event.title}</h1>
       <p className="mt-2 text-sm text-gray-500">
         {new Date(event.startsAt).toLocaleString("pl-PL")}
