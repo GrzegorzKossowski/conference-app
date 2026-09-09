@@ -45,6 +45,7 @@ export async function POST(request: NextRequest) {
         name: [registration.firstName, registration.lastName]
           .filter(Boolean)
           .join(" "),
+        shortCode: registration.shortCode,
         checkedInAt: registration.checkedInAt,
       },
     });
@@ -72,7 +73,16 @@ export async function POST(request: NextRequest) {
     .returning({ id: registrations.id });
 
   if (updated.length === 0) {
-    return NextResponse.json({ result: "already_checked_in" });
+    return NextResponse.json({
+      result: "already_checked_in",
+      registration: {
+        email: registration.email,
+        name: [registration.firstName, registration.lastName]
+          .filter(Boolean)
+          .join(" "),
+        shortCode: registration.shortCode,
+      },
+    });
   }
 
   return NextResponse.json({
@@ -82,6 +92,7 @@ export async function POST(request: NextRequest) {
       name: [registration.firstName, registration.lastName]
         .filter(Boolean)
         .join(" "),
+      shortCode: registration.shortCode,
     },
   });
 }

@@ -12,7 +12,7 @@ type CheckinResult = {
     | "not_found"
     | "invalid"
     | "unauthorized";
-  registration?: { email: string; name: string };
+  registration?: { email: string; name: string; shortCode?: string };
   status?: string;
 };
 
@@ -133,9 +133,17 @@ export function QrScanner({ eventId }: { eventId: string }) {
         >
           <p className="text-lg font-bold">{bannerLabels[lastResult.result]}</p>
           {lastResult.registration && (
-            <p className="mt-1 text-sm">
-              {lastResult.registration.name || lastResult.registration.email}
-            </p>
+            <>
+              <p className="mt-1 text-sm">
+                {lastResult.registration.name || lastResult.registration.email}
+              </p>
+              {lastResult.registration.shortCode && (
+                <p className="mt-1 text-xs opacity-90">
+                  Kod do weryfikacji ustnej:{" "}
+                  <strong>{lastResult.registration.shortCode}</strong>
+                </p>
+              )}
+            </>
           )}
         </div>
       )}

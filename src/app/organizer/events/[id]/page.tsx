@@ -86,6 +86,7 @@ export default async function EventDetailPage({
               <tr>
                 <th className="px-3 py-2">Email</th>
                 <th className="px-3 py-2">Imię i nazwisko</th>
+                <th className="px-3 py-2">Kod</th>
                 <th className="px-3 py-2">Status</th>
                 <th className="px-3 py-2">Zapisano</th>
               </tr>
@@ -98,6 +99,7 @@ export default async function EventDetailPage({
                     {[g.firstName, g.lastName].filter(Boolean).join(" ") ||
                       "—"}
                   </td>
+                  <td className="px-3 py-2 font-mono text-xs">{g.shortCode}</td>
                   <td className="px-3 py-2">
                     <StatusBadge status={g.status} />
                   </td>
