@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { and, eq, inArray, count } from "drizzle-orm";
 import { db } from "@/db";
@@ -53,6 +54,13 @@ export default async function EventLandingPage({
           </>
         )}
       </div>
+
+      <p className="mt-6 text-center text-sm text-gray-500">
+        Masz już bilet?{" "}
+        <Link href="/ticket" className="text-black underline">
+          Wpisz swój kod
+        </Link>
+      </p>
     </div>
   );
 }

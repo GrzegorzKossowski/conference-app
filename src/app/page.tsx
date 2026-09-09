@@ -14,12 +14,14 @@ export default async function Home() {
     <div className="mx-auto max-w-2xl px-4 py-12">
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Wydarzenia</h1>
-        <Link
-          href="/organizer/login"
-          className="text-sm text-gray-500 hover:text-black"
-        >
-          Logowanie dla organizatorów
-        </Link>
+        <div className="flex items-center gap-4 text-sm text-gray-500">
+          <Link href="/ticket" className="hover:text-black">
+            Mam już bilet
+          </Link>
+          <Link href="/organizer/login" className="hover:text-black">
+            Logowanie dla organizatorów
+          </Link>
+        </div>
       </div>
 
       {allEvents.length === 0 ? (
