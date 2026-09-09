@@ -2,7 +2,7 @@ import { randomInt, randomBytes } from "crypto";
 
 // Uppercase alphanumeric, excluding visually ambiguous characters (0/O, 1/I/L).
 const SHORT_CODE_ALPHABET = "23456789ABCDEFGHJKMNPQRSTUVWXYZ";
-const SHORT_CODE_LENGTH = 7;
+const SHORT_CODE_LENGTH = 8;
 
 export function generateShortCode(): string {
   let code = "";
