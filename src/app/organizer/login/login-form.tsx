@@ -18,8 +18,8 @@ export function LoginForm() {
     setError(null);
     setPending(true);
     const { error: signInError } = await authClient.signIn.email({
-      email,
-      password,
+      email: email.trim(),
+      password: password.trim(),
     });
     setPending(false);
     if (signInError) {
