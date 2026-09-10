@@ -7,7 +7,7 @@ import { authClient } from "@/lib/auth-client";
 export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("organizer@example.com");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
@@ -41,14 +41,25 @@ export function LoginForm() {
       )}
       <div>
         <label className="mb-1 block text-sm font-medium">Email</label>
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="organizer@example.com"
-          className="w-full rounded border px-3 py-2"
-        />
+        <div className="relative">
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full rounded border px-3 py-2 pr-8"
+          />
+          {email && (
+            <button
+              type="button"
+              onClick={() => setEmail("")}
+              aria-label="Wyczyść email"
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            >
+              ×
+            </button>
+          )}
+        </div>
       </div>
       <div>
         <label className="mb-1 block text-sm font-medium">Hasło</label>
